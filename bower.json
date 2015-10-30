@@ -1,0 +1,15 @@
+{
+  "name": "project-performance-tracker",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "animate.css": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-nvd3": "~1.0.2"
+  },
+  "resolutions": {
+    "angular": "1.4.7"
+  }
+}

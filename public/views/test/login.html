@@ -1,0 +1,25 @@
+
+<div class="jumbotron text-center">
+  <h1>1-Page</h1>
+  <p>Test tool</p>
+</div>
+<form class="form-horizontal" ng-submit="authenticate()" >
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-3">
+      <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="user.email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-3">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" ng-model="user.password">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-primary active">Sign in</button>
+    </div>
+  </div>
+</form>

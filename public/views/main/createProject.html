@@ -1,0 +1,163 @@
+
+<div class="container">
+  <br/><br/><br/>
+<!--<a ui-sref="home.project" class="btn btn-primary btn-sm active" role="button">Back to Projects</a>!-->
+<!--<a ui-sref="home.project" class="btn btn-primary btn-sm active" role="button">Save Project</a>!-->
+<a ui-sref="home.project" class="btn btn-primary active" role="button">
+  <span class="glyphicon glyphicon-triangle-left"></span>
+  Back</a>
+    <button ng-click="saveProject()" type="button" class="btn btn-primary">
+      <span ng-show="showSpinner" class="glyphicon glyphicon-refresh spinning"></span> Save Project</button>
+
+
+
+<br/><br/><br/>
+
+<div class="form-horizontal">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">Project Title</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="title" class="col-sm-3">Title</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" id="title" placeholder="Title" ng-model="project.title">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Project details</div>
+      <div class="panel-body">
+
+        <div class="form-group">
+          <label for="shortDescription" class="col-sm-3">Short Description</label>
+          <div class="col-sm-3">
+            <input ng-model="project.description" type="text" class="form-control" id="shortDescription" placeholder="Short Description">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="owner" class="col-sm-3">Owner</label>
+          <div class="col-sm-3">
+            <input ng-model="project.owner" type="text" class="form-control" id="owner" placeholder="Owner">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="division" class="col-sm-3">Division</label>
+          <div class="col-sm-3">
+            <input ng-model="project.division" type="text" class="form-control" id="division" placeholder="Division">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="benefitArea" class="col-sm-3">Benefit Area</label>
+          <div class="col-sm-3">
+            <input ng-model="project.benefitArea" type="text" class="form-control" id="benefitArea" placeholder="Benefit Area">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="startDate" class="col-sm-3">Start Date</label>
+          <div class="col-sm-3">
+            <input ng-model="project.startDate" type="date" class="form-control" id="startDate" placeholder="Start Date">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="originatingProperty" class="col-sm-3">Originating Property</label>
+          <div class="col-sm-3">
+            <input ng-model="project.originatingProperty" type="text" class="form-control" id="originatingProperty" placeholder="Originating Property">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="originatingPropertyContact" class="col-sm-3">Originating Property Contact</label>
+          <div class="col-sm-3">
+            <input ng-model="project.originatingPropertyContact" type="text" class="form-control" id="originatingPropertyContact" placeholder="Originating Property Contact">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="originatingPropertyImpact" class="col-sm-3">Originating Property Impact</label>
+          <div class="col-sm-3">
+            <input ng-model="project.originatingPropertyImpact" type="text" class="form-control" id="originatingPropertyImpact" placeholder="Originating Property Impact">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="templateName" class="col-sm-3">Project Template Name</label>
+          <div class="col-sm-3">
+            <input ng-model="project.templateName" type="text" ng-readonly=true class="form-control" id="templateName" placeholder="Template Name">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Project templates</div>
+      <div class="panel-body">
+
+        <!-- Split button -->
+    <div class="btn-group" uib-dropdown>
+      <button id="split-button" type="button" class="btn btn-primary">Templates</button>
+      <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+        <span class="caret"></span>
+        <span class="sr-only">Split button!</span>
+      </button>
+
+      <ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+        <li role="menuitem"><a ng-click="assignTemplate('Increase Revenue w/ baseline')" ui-sref=".template1">Increase Revenue w/ baseline</a></li>
+        <li role="menuitem"><a ng-click="assignTemplate('Room Upsell Tracker')" ui-sref=".template2">Room Upsell Tracker</a></li>
+        <li class="divider"></li>
+        <li role="menuitem"><a href="#">New Template</a></li>
+      </ul>
+    </div>
+    <br/><br/><br/>
+
+
+        <uib-tabset>
+
+            <uib-tab>
+              <uib-tab-heading>
+                <i class="glyphicon glyphicon-blackboard"></i> Tracker Sheet
+              </uib-tab-heading>
+
+              <div ui-view></div>
+
+            </uib-tab>
+            <uib-tab>
+              <uib-tab-heading>
+                <i class="glyphicon glyphicon-pencil"></i> Notes
+              </uib-tab-heading>
+
+
+
+               <hot-table
+
+                  hot-id="my-handsontable"
+                  settings="settingsnew"
+                  datarows="personalData"
+                  >
+                </hot-table>
+<!--
+
+
+
+!-->
+
+            </uib-tab>
+            <uib-tab>
+              <uib-tab-heading>
+                <i class="glyphicon glyphicon-paperclip"></i> Attachment
+              </uib-tab-heading>
+              Attachment goes here
+            </uib-tab>
+          </uib-tabset>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+</div>

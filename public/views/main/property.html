@@ -1,0 +1,44 @@
+
+
+
+<div class="container">
+<br/><br/>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Locations</div>
+      <div class="panel-body">
+        <div class="list-group">
+          <a ui-sref="home.viewproperty({id:model._id,name:model.name})" ng-repeat="model in locations" class="list-group-item">
+            {{model.name}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+  <div class="row">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Projects</div>
+        <div class="panel-body">
+          <div class="list-group">
+            <a href="#" ng-repeat="model in projects" class="list-group-item">
+              {{model.title}}
+            </a>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Recent Activities</div>
+        <div class="panel-body">
+            Recent Activities if any
+        </div>
+      </div>
+  </div>
+</div>
+
+</div>

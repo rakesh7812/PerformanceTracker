@@ -1,0 +1,154 @@
+
+<div class="container">
+<br/><br/><br/>
+    <a ui-sref="home.createProject" class="btn btn-primary active" role="button">
+      <span class="glyphicon glyphicon-plus-sign"></span>
+      CreateNewProject</a>
+
+<br/><br/><br/>
+
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">Projects</div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Owner</th>
+                <th>Division</th>
+                <th>Benefit Area</th>
+                <th>Start Date</th>
+                <!--<th>Originating Property</th>
+                <th>Originating Property Contact</th>
+                <th>Originating Property Impact</th>!-->
+                <th>Template Name</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tr ng-repeat="model in allProjects">
+              <td>{{model.title}}</td>
+              <td>{{model.owner}}</td>
+              <td>{{model.division}}</td>
+              <td>{{model.benefitArea}}</td>
+              <td>{{model.startDate | date:"MMM dd, y"}}</td>
+            <!--  <td>{{model.originatingProperty}}</td>
+              <td>{{model.originatingPropertyContact}}</td>
+              <td>{{model.originatingPropertyImpact}}</td>!-->
+              <td>{{model.templateName}}</td>
+              <td><button ng-click="showInviteProperty(model._id, model.title,model.templateName)" class="btn btn-warning" type="button">Invite Property</button></td>
+              <td><button ng-click="showPropertiesInvited(model._id,model.title)" class="btn btn-warning" type="button">Properties Invited</button></td>
+            </tr>
+        </table>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/ng-template" id="template-invite-property">
+  <div class="container-fluid">
+    <br/>
+    <div class="panel-group">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Invite Property to Project - {{currentProjectName}}</div>
+        <div class="panel-body">
+          <div class="row">
+              <div class="col-sm-4">
+                  <div ng-dropdown-multiselect="" translation-texts="{buttonDefaultText: 'Select Property'}"
+                  extra-settings="propertySettings" options="locations"
+                  selected-model="selectedLocations" checkboxes="true">
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <span class="label label-warning">Selected Locations:</span>
+                &nbsp;
+                  <span class="label label-default" style="margin-right:10px;" ng-repeat="loc in selectedLocations">
+                    {{loc.name}}
+                  </span>
+              </div>
+          </div>
+          <br/>
+          <div class="row container-fluid">
+            <div class="form-group">
+              <label for="message"><span label label-default>Message:</span></label>
+              <textarea ng-model="message" class="form-control" rows="5" id="message"></textarea>
+            </div>
+          </div>
+          <br/>
+          <div class="row container-fluid">
+            <button ng-click="inviteProperty()" class="btn btn-primary" type="button">Send</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="template-properties-invited">
+  <div class="container-fluid">
+    <br/>
+    <div class="panel-group">
+      <div class="panel panel-primary">
+        <div class="panel-heading">{{currentProjectName}}</div>
+        <div class="panel-body">
+          <div class="row container-fluid">
+            <span ng-show="noLocations" class="label label-warning">No properties has been invited</span>
+            <table ng-show="!noLocations" class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Properties Invited</th>
+                  </tr>
+                </thead>
+                <tr ng-repeat="model in locations">
+                  <td>{{model.name}}</td>
+                </tr>
+            </table>
+
+          </div>
+          <br/>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</script>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="row">
+  <div class="col-md-8">.col-md-8</div>
+  <div class="col-md-4">.col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-md-6">.col-md-6</div>
+  <div class="col-md-6">.col-md-6</div>
+</div>
+!-->

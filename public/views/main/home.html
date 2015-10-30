@@ -1,0 +1,32 @@
+
+<div class="container-fluid">
+   <div class="row">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="/img/1page.png"/></a>
+    <!--  <h6>  Welcome &nbsp;{{currentUser.email}}</h6>!-->
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a ui-sref=".project">PROJECT</a></li>
+          <li><a ui-sref=".property">PROPERTY</a></li>
+          <li><a href="#portfolio">PORTFOLIO</a></li>
+          <li><a href="#pricing">DASHBOARD</a></li>
+          <li><a href="#" ng-click="logout()">LOGOUT</a></li>
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+</div>
+
+<div ui-view></div>
+
+</div>

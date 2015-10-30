@@ -1,0 +1,114 @@
+<div class="container">
+  <br/><br/>
+<!--<a ui-sref="home.project" class="btn btn-primary btn-sm active" role="button">Back to Projects</a>!-->
+<!--<a ui-sref="home.project" class="btn btn-primary btn-sm active" role="button">Save Project</a>!-->
+<a ui-sref="home.property" class="btn btn-primary active" role="button">
+  <span class="glyphicon glyphicon-triangle-left"></span>
+  Back</a>
+  <!--
+<div class="text-center text-info">
+
+  <h4><p class="text-info">{{locationDetails.name}}</p></h3>
+  <h4><p class="text-info">{{projectDetails.title}}</p></h3>
+
+</div>
+
+!-->
+
+
+  <div class="btn-group" uib-dropdown>
+    <button id="split-button" type="button" class="btn btn-primary">Projects</button>
+    <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+      <span class="caret"></span>
+      <span class="sr-only">Split button!</span>
+    </button>
+
+    <ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+        <li ng-repeat="model in projectList" role="menuitem">
+          <a ui-sref="home.editProject({projectId:model._id,locationId:locationId})">{{model.title}}</a>
+        </li>
+    </ul>
+
+</div>
+
+<p></p>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="panel panel-default" style="height:562px;">
+        <div class="panel-heading">Project Details</div>
+        <div class="panel-body">
+            <p>Location : {{locationDetails.name}}</p>
+            <p>Project Title : {{projectDetails.title}}</p>
+            <p>Short Description : {{projectDetails.description}}</p>
+            <p>Owner : {{projectDetails.owner}}</p>
+            <p>Division : {{projectDetails.division}}</p>
+            <p>Benefit Area : {{projectDetails.benefitArea}}</p>
+            <p>Originating Property : {{projectDetails.originatingProperty}}</p>
+            <p>Originating Property Contact : {{projectDetails.originatingPropertyContact}}</p>
+            <p>Originating Property Impact : {{projectDetails.originatingPropertyImpact}}</p>
+            <p>Start Date : {{projectDetails.startDate | date:"MMM dd, y"}}</p>
+            <p>Template Name : {{projectDetails.templateName}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="panel panel-default">
+        <div class="panel-heading">Chart </div>
+        <div class="panel-body">
+            <nvd3 options="options" data="data"></nvd3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body">
+        <uib-tabset>
+
+            <uib-tab>
+              <uib-tab-heading>
+                <i class="glyphicon glyphicon-blackboard"></i> Tracker Sheet
+              </uib-tab-heading>
+
+              <hot-table ng-if="isTemplate1"
+                 hot-id="handson-template-table"
+                 settings="settingsTemplate1"
+                 datarows="masterDetails.data"
+                 >
+               </hot-table>
+               <hot-table ng-if="!isTemplate1"
+                  hot-id="handson-template-table"
+                  settings="settingsTemplate2"
+                  datarows="masterDetails.data"
+                  >
+                </hot-table>
+
+               <button ng-click="saveData()" type="button" class="btn btn-primary">
+                 <span ng-show="showSpinner" class="glyphicon glyphicon-refresh spinning"></span> Save Data</button>
+            </uib-tab>
+            <uib-tab>
+              <uib-tab-heading>
+                <i class="glyphicon glyphicon-pencil"></i> Notes
+              </uib-tab-heading>
+              Notes display section
+
+            </uib-tab>
+            <uib-tab>
+              <uib-tab-heading>
+                <i class="glyphicon glyphicon-paperclip"></i> Attachment
+              </uib-tab-heading>
+              Attachment goes here
+            </uib-tab>
+          </uib-tabset>
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+</div>
