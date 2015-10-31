@@ -1,4 +1,4 @@
-angular.module('trackerApp', ['ui.router','nvd3','ngCookies','appRoutes','trackerapp.authentication.service',
+angular.module('trackerApp', ['ui.router','nvd3','chart.js','ngCookies','appRoutes','trackerapp.authentication.service',
 'trackerapp.login','ngDialog','tracker.app.project','ui.bootstrap',
 'tracker.app.template1','tracker.app.template2','trackerapp.project.service',
 'tracker.app.project.inviteproperty','ngHandsontable','angularjs-dropdown-multiselect'

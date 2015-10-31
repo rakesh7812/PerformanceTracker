@@ -25,6 +25,18 @@ angular.module('trackerapp.property.service',[]).factory('propertyService',funct
         return deferred.promise;
     }
 
+    services.getProjectDetailsForAllLocations =  function(projectId){
+      var deferred = $q.defer();
+        $http.get("/api/getProjectDetailsForAllLocations/"+projectId)
+        .then(function(result){
+          console.log(result);
+          deferred.resolve(result.data);
+        }, function(error){
+            deferred.reject(error);
+        });
+        return deferred.promise;
+    }
+
     services.updateMasterData = function (master){
       var deferred = $q.defer();
       $http.post("/api/updateMasterData", master). then(function(result){

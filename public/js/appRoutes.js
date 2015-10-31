@@ -48,6 +48,11 @@ function($stateProvider,$urlRouterProvider,$locationProvider,  $httpProvider){
                 url: "^/home/editProject/:locationId/:projectId",
                 templateUrl: "views/main/projectPerProperty.html",
                 controller :"ProjectPerPropertyController"
+          })
+          .state('home.viewPDForAllLocs', {
+                url: "^/home/viewPDForAllLocs/:projectId",
+                templateUrl: "views/main/viewPDForAllLocs.html",
+                controller :"ProjectForAllPropertyController"
           });
 
 

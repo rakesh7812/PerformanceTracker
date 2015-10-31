@@ -1,0 +1,46 @@
+<div class="container">
+  <br/><br/>
+<!--<a ui-sref="home.project" class="btn btn-primary btn-sm active" role="button">Back to Projects</a>!-->
+<!--<a ui-sref="home.project" class="btn btn-primary btn-sm active" role="button">Save Project</a>!-->
+<a ui-sref="home.property" class="btn btn-primary active" role="button">
+  <span class="glyphicon glyphicon-triangle-left"></span>
+  Back</a>
+
+<p></p>
+
+<div class="row">
+  <div class="col-md-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">Project Details</div>
+      <div class="panel-body">
+          <p>Location : {{locationDetails.name}}</p>
+          <p>Project Title : {{projectDetails.title}}</p>
+          <p>Short Description : {{projectDetails.description}}</p>
+          <p>Owner : {{projectDetails.owner}}</p>
+          <p>Division : {{projectDetails.division}}</p>
+          <p>Benefit Area : {{projectDetails.benefitArea}}</p>
+          <p>Originating Property : {{projectDetails.originatingProperty}}</p>
+          <p>Originating Property Contact : {{projectDetails.originatingPropertyContact}}</p>
+          <p>Originating Property Impact : {{projectDetails.originatingPropertyImpact}}</p>
+          <p>Start Date : {{projectDetails.startDate | date:"MMM dd, y"}}</p>
+          <p>Template Name : {{projectDetails.templateName}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">Performance chart for all locations</div>
+    <div class="panel-body">
+      <canvas id="bar" class="chart chart-bar"
+chart-data="data" chart-labels="labels">
+</canvas
+    </div>
+  </div>
+</div>
+</div>
+
+
+</div>

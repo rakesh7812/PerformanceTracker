@@ -118,7 +118,9 @@ router.get('/listAllProjectsByLocation/:id', function(req,res){
 router.get('/getProjectDetailsByLocation/:locationId/:projectId', function(req,res){
   trackerController.getProjectDetailsByLocation(req,res);
 });
-
+router.get('/getProjectDetailsForAllLocations/:projectId', function(req,res){
+  trackerController.getProjectDetailsForAllLocations(req,res);
+});
 router.post('/inviteProperty', function(req,res){
     trackerController.inviteProperty(req,res, req.body);
 });

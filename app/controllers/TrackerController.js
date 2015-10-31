@@ -25,6 +25,10 @@ trackerController.listAllProjectsByLocation =  function(req,res){
 trackerController.getProjectDetailsByLocation =  function(req,res){
   trackerService.getProjectDetailsByLocation(req,res);
 }
+trackerController.getProjectDetailsForAllLocations =  function(req,res){
+  trackerService.getProjectDetailsForAllLocations(req,res);
+}
+
 trackerController.updateMasterData =  function(master){
   trackerService.updateMasterData(master);
 }

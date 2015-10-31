@@ -130,6 +130,20 @@ trackerService.getProjectDetailsByLocation =  function(req,res){
   });
 }
 
+trackerService.getProjectDetailsForAllLocations = function(req,res){
+  var projectId = req.params.projectId;
+  ProjectModel.findById(projectId, function(err, project){
+      MasterModel.find({"projectId":projectId}, function(err,masters){
+          res.json({
+            projectDetails: project,
+            masterDetails:masters
+          });
+      });
+
+  });
+
+}
+
 trackerService.updateMasterData =  function(master){
   MasterModel.findById(master._id,function(err, masterFromDb){
       masterFromDb.data = master.data;

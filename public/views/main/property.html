@@ -24,7 +24,7 @@
         <div class="panel-heading">Projects</div>
         <div class="panel-body">
           <div class="list-group">
-            <a href="#" ng-repeat="model in projects" class="list-group-item">
+            <a ui-sref="home.viewPDForAllLocs({projectId:model._id})" ng-repeat="model in projects" class="list-group-item">
               {{model.title}}
             </a>
           </div>

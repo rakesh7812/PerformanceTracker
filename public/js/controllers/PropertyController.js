@@ -1,4 +1,90 @@
 angular.module('tracker.app.property',[])
+.controller('ProjectForAllPropertyController', function($scope,$state,projectService,ngDialog,propertyService,$stateParams,$filter){
+
+$scope.title = 'ProjectForAllPropertyController';
+
+$scope.init = function(){
+    propertyService.getProjectDetailsForAllLocations($stateParams.projectId)
+    .then(function(result){
+        $scope.masterDetails = result.masterDetails;
+        $scope.projectDetails = result.projectDetails;
+        //get all locations - This has to based on selected project locations..TODO
+        projectService.listAllLocationsFilterByProject($stateParams.projectId)
+        .then(function(result){
+            $scope.locations = result;
+
+            $scope.data = getBarChartData();
+
+        }, function(error){
+           ngDialog.open({
+              template: '<p>Failed to fetch locations details..<p>'
+          });
+        });
+    }, function(error){
+       ngDialog.open({
+          template: '<p>Failed to fetch project details for all locations..<p>'
+      });
+    });
+
+}
+
+$scope.init();
+
+//***********Chart data goes here***********
+
+//$scope.labels = ['Apr 2015', 'May 2015', 'Jun 2015', 'Jul 2015', 'Aug 2015', 'Sep 2015', 'Oct 2015', "Nov 2015","Dec 2015", "Jan 2016", "Feb 2016". "Mar 2016"];
+
+
+$scope.series = ['Apr 2015', 'May 2015', 'Jun 2015', 'Jul 2015', 'Aug 2015', 'Sep 2015', 'Oct 2015', 'Nov 2015','Dec 2015', 'Jan 2016', 'Feb 2016', 'Mar 2016'];
+
+  function getBarChartLabels(){
+    var labels = [];
+    $scope.masterDetails.map(function(eachMaster){
+        var locName = getLocationNameById(eachMaster.locationId);
+        labels.push(locName);
+    });
+    return labels;
+  }
+
+  function getLocationNameById(locationId){
+    var locName;
+      $scope.locations.map(function(loc){
+          if(angular.equals(locationId,loc._id)){
+            locName = loc.name;
+          }
+      });
+      return locName;
+  }
+
+
+  function getBarChartData(){
+    var result = [];
+    
+    for(var i=2; i<=13;i++){
+      var dataArray = [];
+      $scope.masterDetails.map(function(eachMaster){
+        var dataGrid = eachMaster.data[1];
+        //push jan data of all masters in first array
+        dataArray.push(dataGrid[i]);
+      });
+      result.push(dataArray);
+    }
+
+    $scope.labels = getBarChartLabels();
+    console.log(result);
+    return result;
+  /*return   [
+      [65, 59, 80, 81, 56, 55, 40],
+      [28, 48, 40, 19, 86, 27, 90],
+      [34, 56, 80, 23, 67, 78, 134]
+    ];*/
+  }
+
+
+//************Chart data ends here
+
+
+})
 .controller('PropertyListController', function($scope,$state,projectService,ngDialog,propertyService){
 
 $scope.title = 'PropertyListController';
