@@ -71,7 +71,6 @@ $scope.series = ['Apr 2015', 'May 2015', 'Jun 2015', 'Jul 2015', 'Aug 2015', 'Se
     }
 
     $scope.labels = getBarChartLabels();
-    console.log(result);
     return result;
   /*return   [
       [65, 59, 80, 81, 56, 55, 40],
@@ -119,8 +118,6 @@ $scope.title = 'PropertyController';
 $scope.assignedProjects = null;
 
 $scope.init = function(){
-  //console.log("Location id is "+$stateParams.id);
-  //console.log("$stateParams.name "+$stateParams.name);
   $scope.locationId = $stateParams.id;
   $scope.locationName =$stateParams.name;
   //get all projects by
@@ -143,7 +140,6 @@ $scope.init();
 
   $scope.title = 'ProjectPerPropertyController';
   $scope.init = function(){
-    console.log("Inside ininti");
     $scope.locationId = $stateParams.locationId;
     $scope.projectId =$stateParams.projectId;
     //get project details passing projectId and locationId
@@ -318,7 +314,6 @@ $scope.settingsTemplate2 = {
   $scope.init();
 
   $timeout(function(){
-    console.log("Inside timeout");
     var tableInstance = hotRegisterer.getInstance('handson-template-table');
                tableInstance.updateSettings({formulas: true});
                tableInstance.render();
