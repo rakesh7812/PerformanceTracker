@@ -59,7 +59,7 @@ $scope.series = ['Apr 2015', 'May 2015', 'Jun 2015', 'Jul 2015', 'Aug 2015', 'Se
 
   function getBarChartData(){
     var result = [];
-    
+
     for(var i=2; i<=13;i++){
       var dataArray = [];
       $scope.masterDetails.map(function(eachMaster){
@@ -143,6 +143,7 @@ $scope.init();
 
   $scope.title = 'ProjectPerPropertyController';
   $scope.init = function(){
+    console.log("Inside ininti");
     $scope.locationId = $stateParams.locationId;
     $scope.projectId =$stateParams.projectId;
     //get project details passing projectId and locationId
@@ -163,7 +164,7 @@ $scope.init();
 
     }, function(error){
        ngDialog.open({
-          template: '<p>Failed to fetch project details..<p>'
+          template: '<p>Failed to fetch project dailetails..<p>'
       });
     });
     //get all projects in that location and populate in drop down
@@ -319,10 +320,11 @@ $scope.settingsTemplate2 = {
   $scope.init();
 
   $timeout(function(){
+    console.log("Inside timeout");
     var tableInstance = hotRegisterer.getInstance('handson-template-table');
                tableInstance.updateSettings({formulas: true});
                tableInstance.render();
-               },10);
+             },1);
 
 
 
