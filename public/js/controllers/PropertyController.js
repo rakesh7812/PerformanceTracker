@@ -323,8 +323,8 @@ $scope.settingsTemplate2 = {
     console.log("Inside timeout");
     var tableInstance = hotRegisterer.getInstance('handson-template-table');
                tableInstance.updateSettings({formulas: true});
-               tableInstance.render();
-             },1);
+               //tableInstance.render();
+               },10);
 
 
 
