@@ -322,7 +322,7 @@ $scope.settingsTemplate2 = {
     var tableInstance = hotRegisterer.getInstance('handson-template-table');
                tableInstance.updateSettings({formulas: true});
                tableInstance.render();
-             },50);
+             },1000);
 
 
 
