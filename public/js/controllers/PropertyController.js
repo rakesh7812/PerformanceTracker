@@ -154,8 +154,6 @@ $scope.init();
         $scope.locationDetails = result.locationDetails;
         if($scope.projectDetails.templateName == "Increase Revenue w/ baseline") {
           $scope.isTemplate1 = true;
-          console.log($scope.isTemplate1);
-
         }
         else{
           $scope.isTemplate1 = false;
@@ -324,7 +322,7 @@ $scope.settingsTemplate2 = {
     var tableInstance = hotRegisterer.getInstance('handson-template-table');
                tableInstance.updateSettings({formulas: true});
                //tableInstance.render();
-               },10);
+             },50);
 
 
 
