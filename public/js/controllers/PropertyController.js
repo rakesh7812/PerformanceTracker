@@ -175,8 +175,14 @@ $scope.init();
   $scope.showSpinner = false;
 
   $scope.saveData = function(){
-    //  var tableInstance = hotRegisterer.getInstance('handson-template-table');
+    //get total revenue evaluating formula
+      var tableInstance = hotRegisterer.getInstance('handson-template-table');
       //var tableData = JSON.stringify(tableInstance.getData());
+      var item = tableInstance.plugin.matrix.getItem(tableInstance.plugin.utils.translateCellCoords({row: 1, col: 14}));
+      var newValue = tableInstance.plugin.parse(item.formula, {row: 1, col: 14, id: tableInstance.plugin.utils.translateCellCoords({row: 1, col: 14})});
+      //console.log(newValue.result);
+      $scope.masterDetails.totalRevenue = newValue.result;
+
     $scope.showSpinner = true;
     propertyService.updateMasterData($scope.masterDetails)
     .then(function(result){

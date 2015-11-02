@@ -2,7 +2,7 @@ angular.module('trackerApp', ['ui.router','nvd3','chart.js','ngCookies','appRout
 'trackerapp.login','ngDialog','tracker.app.project','ui.bootstrap',
 'tracker.app.template1','tracker.app.template2','trackerapp.project.service',
 'tracker.app.project.inviteproperty','ngHandsontable','angularjs-dropdown-multiselect'
-,'trackerapp.property.service','tracker.app.property'])
+,'trackerapp.property.service','tracker.app.property','tracker.app.portfolio'])
 .config(['ngDialogProvider', function (ngDialogProvider) {
     ngDialogProvider.setDefaults({
         className: 'ngdialog-theme-default',

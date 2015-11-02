@@ -2,6 +2,18 @@ angular.module('trackerapp.property.service',[]).factory('propertyService',funct
 
     var services = {};
 
+
+    services.getAllProjectMasterDetails =  function(){
+      var deferred = $q.defer();
+        $http.get("/api/getAllProjectMasterDetails")
+        .then(function(result){
+          deferred.resolve(result.data);
+        }, function(error){
+            deferred.reject(error);
+        });
+        return deferred.promise;
+    }
+
     services.listAllLocationsByProject =  function(locationId){
       var deferred = $q.defer();
         $http.get("/api/listAllProjectsByLocation/"+locationId)
@@ -17,7 +29,7 @@ angular.module('trackerapp.property.service',[]).factory('propertyService',funct
       var deferred = $q.defer();
         $http.get("/api/getProjectDetailsByLocation/"+locationId+"/"+projectId)
         .then(function(result){
-          console.log(result);
+          //console.log(result);
           deferred.resolve(result.data);
         }, function(error){
             deferred.reject(error);
@@ -29,7 +41,6 @@ angular.module('trackerapp.property.service',[]).factory('propertyService',funct
       var deferred = $q.defer();
         $http.get("/api/getProjectDetailsForAllLocations/"+projectId)
         .then(function(result){
-          console.log(result);
           deferred.resolve(result.data);
         }, function(error){
             deferred.reject(error);
@@ -54,9 +65,99 @@ angular.module('trackerapp.property.service',[]).factory('propertyService',funct
       return deferred.promise;
     }
 
+    function getLocationNameById(locationId, locations){
+      var locName;
+        locations.map(function(loc){
+            if(angular.equals(locationId,loc._id)){
+              locName = loc.name;
+            }
+        });
+        return locName;
+    }
+
+    services.preparePortfolioChartData =  function(masterDetails, locations){
+
+      var result = [];
+
+      masterDetails.map(function(eachMaster){
+        var locationKey = getLocationNameById(eachMaster.locationId, locations);
+        var valuesArray = []
+        var dataGrid  = eachMaster.data[1];
+
+        valuesArray.push({
+          x: "Apr 2015",
+          y: dataGrid[2],
+          key: locationKey
+        });
+
+        valuesArray.push({
+          x: "May 2015",
+          y: dataGrid[3],
+          key: locationKey
+        });
+        valuesArray.push({
+          x: "Jun 2015",
+          y: dataGrid[4],
+          key: locationKey
+        });
+        valuesArray.push({
+          x: "Jul 2015",
+          y: dataGrid[5],
+          key: locationKey
+        });
+        valuesArray.push({
+          x: "Aug 2015",
+          y: dataGrid[6],
+          key: locationKey
+        });
+        valuesArray.push({
+          x: "Sep 2015",
+          y: dataGrid[7],
+          key: locationKey
+        });
+        valuesArray.push({
+          x: "Oct 2015",
+          y: dataGrid[8],
+          key: locationKey
+        });
+        valuesArray.push({
+          x: "Nov 2015",
+          y: dataGrid[9],
+          key: locationKey
+        });
+        valuesArray.push({
+          x: "Dec 2015",
+          y: dataGrid[10],
+          key: locationKey
+        });
+        valuesArray.push({
+          x: "Jan 2016",
+          y: dataGrid[11],
+          key: locationKey
+        });
+        valuesArray.push({
+          x: "Feb 2016",
+          y: dataGrid[12],
+          key: locationKey
+        });
+        valuesArray.push({
+          x: "Mar 2016",
+          y: dataGrid[13],
+          key: locationKey
+        });
+        result.push({
+          key:locationKey,
+          values:valuesArray
+        });
+
+      });
+      return result;
+
+    }
+
     services.prepareChartData =  function(masterDetails,isTemplate1){
       var result = [];
-      console.log(isTemplate1);
+      //console.log(isTemplate1);
       if(isTemplate1){
 
           var data =  masterDetails.data[1];
@@ -110,7 +211,7 @@ angular.module('trackerapp.property.service',[]).factory('propertyService',funct
           });
 
       }
-console.log(result);
+//console.log(result);
     return result;
 
     }

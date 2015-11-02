@@ -33,10 +33,13 @@ trackerController.updateMasterData =  function(master){
   trackerService.updateMasterData(master);
 }
 
-
 trackerController.inviteProperty =  function(req,res, data){
   trackerService.inviteProperty(req,res, data);
-
 }
+
+trackerController.getAllProjectMasterDetails =  function(req,res, data){
+  trackerService.getAllProjectMasterDetails(req,res, data);
+}
+
 
 module.exports = trackerController;

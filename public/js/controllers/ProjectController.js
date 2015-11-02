@@ -18,7 +18,6 @@ $scope.init = function(){
 $scope.init();
 
 $scope.showInviteProperty =  function(projectId, projectName,templateName){
-  console.log("projectId is "+projectId);
   $scope.currentProjectId = projectId;
   $scope.currentProjectName = projectName;
   $scope.currentProjectTemplateName = templateName;
@@ -32,7 +31,6 @@ $scope.showInviteProperty =  function(projectId, projectName,templateName){
 }
 
 $scope.showPropertiesInvited =  function(projectId, projectName){
-  console.log("projectId is "+projectId);
   $scope.currentProjectId = projectId;
   $scope.currentProjectName = projectName;
   ngDialog.open({

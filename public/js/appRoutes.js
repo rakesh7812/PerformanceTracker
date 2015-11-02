@@ -53,7 +53,18 @@ function($stateProvider,$urlRouterProvider,$locationProvider,  $httpProvider){
                 url: "^/home/viewPDForAllLocs/:projectId",
                 templateUrl: "views/main/viewPDForAllLocs.html",
                 controller :"ProjectForAllPropertyController"
+          })
+          .state('home.portfolio', {
+                url: "^/portfolio",
+                templateUrl: "views/main/portfolio.html",
+                controller :"PortfolioListController"
+          })
+          .state('home.projectPortfolioDetails', {
+                url: "^/home/projectPortfolioDetails/:projectId",
+                templateUrl: "views/main/projectPortfolioDetails.html",
+                controller :"ProjectPortfolioDetailsController"
           });
+
 
 
 

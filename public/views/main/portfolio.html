@@ -1,0 +1,42 @@
+<div class="container">
+<br/><br/><br/>
+
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">Projects</div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Revenue</th>
+                <th>Owner</th>
+                <th>Division</th>
+                <th>Benefit Area</th>
+                <th>Start Date</th>
+                <th>Template Name</th>
+                <th>Revenue</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tr ng-repeat="model in projectDetails">
+              <td>{{model.project.title}}</td>
+              <td>{{model.revenue | currency}}</td>
+              <td>{{model.project.owner}}</td>
+              <td>{{model.project.division}}</td>
+              <td>{{model.project.benefitArea}}</td>
+              <td>{{model.project.startDate | date:"MMM dd, y"}}</td>
+              <td>{{model.project.templateName}}</td>
+              <td>
+                <a ui-sref="home.projectPortfolioDetails({projectId:model.project._id})" class="btn btn-primary active" role="button">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                  Details</a>
+              </td>
+            </tr>
+        </table>
+    </div>
+  </div>
+</div>
+
+
+</div>

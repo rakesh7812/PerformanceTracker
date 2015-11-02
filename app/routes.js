@@ -121,6 +121,12 @@ router.get('/getProjectDetailsByLocation/:locationId/:projectId', function(req,r
 router.get('/getProjectDetailsForAllLocations/:projectId', function(req,res){
   trackerController.getProjectDetailsForAllLocations(req,res);
 });
+
+router.get('/getAllProjectMasterDetails', function(req,res){
+  trackerController.getAllProjectMasterDetails(req,res);
+});
+
+
 router.post('/inviteProperty', function(req,res){
     trackerController.inviteProperty(req,res, req.body);
 });

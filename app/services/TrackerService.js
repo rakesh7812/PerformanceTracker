@@ -147,6 +147,7 @@ trackerService.getProjectDetailsForAllLocations = function(req,res){
 trackerService.updateMasterData =  function(master){
   MasterModel.findById(master._id,function(err, masterFromDb){
       masterFromDb.data = master.data;
+      masterFromDb.totalRevenue = master.totalRevenue;
       masterFromDb.save(function(err){
           return err;
       });
@@ -154,5 +155,39 @@ trackerService.updateMasterData =  function(master){
   });
 }
 
+trackerService.getAllProjectMasterDetails =  function(req,res){
+  ProjectModel.find({}, function(err,projects){
+    var result = [];
+
+    var projectSize = projects.length;
+    var i = 1;
+    projects.map(function(project){
+        //calculate total revenue
+        MasterModel.find({"projectId":project._id},function(err,masters){
+            var total = 0;
+            masters.map(function(eachMaster){
+              if(!(eachMaster.totalRevenue == undefined)){
+                total = total + eachMaster.totalRevenue;
+              }
+            });
+            var ipData = {
+              "project" : project,
+              "revenue" : total
+            }
+            if(masters.length > 0){
+              result.push(ipData);
+            }
+            if(projectSize == i){
+              res.json(result);
+            }
+            i++;
+        });
+    });
+
+
+
+
+  });
+}
 
 module.exports = trackerService;

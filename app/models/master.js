@@ -6,5 +6,6 @@ module.exports = mongoose.model('Master', new Schema({
   locationId : String,
   data : Array,
   invitedBy : String,
-  createDate : Date
+  createDate : Date,
+  totalRevenue : Number
 }));

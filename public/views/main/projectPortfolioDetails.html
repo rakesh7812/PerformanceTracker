@@ -2,7 +2,7 @@
   <br/><br/>
 <!--<a ui-sref="home.project" class="btn btn-primary btn-sm active" role="button">Back to Projects</a>!-->
 <!--<a ui-sref="home.project" class="btn btn-primary btn-sm active" role="button">Save Project</a>!-->
-<a ui-sref="home.property" class="btn btn-primary active" role="button">
+<a ui-sref="home.portfolio" class="btn btn-primary active" role="button">
   <span class="glyphicon glyphicon-triangle-left"></span>
   Back</a>
 
@@ -31,15 +31,11 @@
 <div class="row">
   <div class="col-md-12">
   <div class="panel panel-default">
-    <div class="panel-heading">Performance by location</div>
+    <div class="panel-heading">Performance by month</div>
     <div class="panel-body">
-      <canvas id="bar" class="chart chart-bar"
-chart-data="data" chart-labels="labels" chart-series="series">
-</canvas>
+      <nvd3 options="options" data="data"></nvd3>
     </div>
   </div>
 </div>
 </div>
-
-
 </div>
