@@ -129,26 +129,23 @@ $scope.init = function(){
   projectService.listAllLocations()
   .then(function(result){
       $scope.locations = result;
-
-      projectService.listAllProject()
-      .then(function(result){
-          $scope.projects = result;
-          $scope.$parent.showLoader = false;
-      }, function(error){
-        $scope.$parent.showLoader = false;
-         ngDialog.open({
-            template: '<p>Failed to fetch all projects..<p>'
-        });
-      });
-
   }, function(error){
-    $scope.$parent.showLoader = false;
+      $scope.$parent.showLoader = false;
      ngDialog.open({
         template: '<p>Failed to fetch all locations..<p>'
     });
   });
 
-
+  projectService.listAllProject()
+  .then(function(result){
+      $scope.projects = result;
+      $scope.$parent.showLoader = false;
+  }, function(error){
+    $scope.$parent.showLoader = false;
+     ngDialog.open({
+        template: '<p>Failed to fetch all projects..<p>'
+    });
+  });
 
 
 }
@@ -204,17 +201,7 @@ $scope.$parent.showLoader = true;
         }
         $scope.data = getChartData();
 
-        //get all projects in that location and populate in drop down
-        propertyService.listAllLocationsByProject($scope.locationId)
-        .then(function(result){
-            $scope.projectList = result;
-            $scope.$parent.showLoader = false;
-        }, function(error){
-          $scope.$parent.showLoader = false;
-           ngDialog.open({
-              template: '<p>Failed to fetch all projects..<p>'
-          });
-        });
+        $scope.$parent.showLoader = false;
 
     }, function(error){
       $scope.$parent.showLoader = false;
@@ -223,6 +210,15 @@ $scope.$parent.showLoader = true;
       });
     });
 
+    //get all projects in that location and populate in drop down
+    propertyService.listAllLocationsByProject($scope.locationId)
+    .then(function(result){
+        $scope.projectList = result;
+    }, function(error){
+       ngDialog.open({
+          template: '<p>Failed to fetch all projects..<p>'
+      });
+    });
 
   }
   $scope.showSpinner = false;
