@@ -1,6 +1,6 @@
 angular.module('tracker.app.property',[])
 .controller('ProjectForAllPropertyController', function($scope,$state,projectService,ngDialog,propertyService,$stateParams,$filter){
-
+$scope.$parent.showLoader = true;
 $scope.title = 'ProjectForAllPropertyController';
 
 $scope.init = function(){
@@ -14,13 +14,16 @@ $scope.init = function(){
             $scope.locations = result;
 
             $scope.data = getBarChartData();
+            $scope.$parent.showLoader = false;
 
         }, function(error){
+          $scope.$parent.showLoader = false;
            ngDialog.open({
               template: '<p>Failed to fetch locations details..<p>'
           });
         });
     }, function(error){
+      $scope.$parent.showLoader = false;
        ngDialog.open({
           template: '<p>Failed to fetch project details for all locations..<p>'
       });
@@ -120,24 +123,34 @@ $scope.options = {
 
 $scope.title = 'PropertyListController';
 
+$scope.$parent.showLoader = true;
+
 $scope.init = function(){
   projectService.listAllLocations()
   .then(function(result){
       $scope.locations = result;
+
+      projectService.listAllProject()
+      .then(function(result){
+          $scope.projects = result;
+          $scope.$parent.showLoader = false;
+      }, function(error){
+        $scope.$parent.showLoader = false;
+         ngDialog.open({
+            template: '<p>Failed to fetch all projects..<p>'
+        });
+      });
+
   }, function(error){
+    $scope.$parent.showLoader = false;
      ngDialog.open({
         template: '<p>Failed to fetch all locations..<p>'
     });
   });
 
-  projectService.listAllProject()
-  .then(function(result){
-      $scope.projects = result;
-  }, function(error){
-     ngDialog.open({
-        template: '<p>Failed to fetch all projects..<p>'
-    });
-  });
+
+
+
 }
 
 $scope.init();
@@ -146,6 +159,7 @@ $scope.init();
 .controller('PropertyController', function($scope,$state,projectService,ngDialog,propertyService,$stateParams){
 
 $scope.title = 'PropertyController';
+$scope.$parent.showLoader = true;
 
 $scope.assignedProjects = null;
 
@@ -156,7 +170,9 @@ $scope.init = function(){
   propertyService.listAllLocationsByProject($stateParams.id)
   .then(function(result){
       $scope.assignedProjects = result;
+      $scope.$parent.showLoader = false;
   }, function(error){
+    $scope.$parent.showLoader = false;
      ngDialog.open({
         template: '<p>Failed to fetch all projects..<p>'
     });
@@ -169,7 +185,7 @@ $scope.init();
 
 })
 .controller('ProjectPerPropertyController', function($scope,$state,projectService,ngDialog,propertyService,$stateParams,$timeout,hotRegisterer){
-
+$scope.$parent.showLoader = true;
   $scope.title = 'ProjectPerPropertyController';
   $scope.init = function(){
     $scope.locationId = $stateParams.locationId;
@@ -188,20 +204,25 @@ $scope.init();
         }
         $scope.data = getChartData();
 
+        //get all projects in that location and populate in drop down
+        propertyService.listAllLocationsByProject($scope.locationId)
+        .then(function(result){
+            $scope.projectList = result;
+            $scope.$parent.showLoader = false;
+        }, function(error){
+          $scope.$parent.showLoader = false;
+           ngDialog.open({
+              template: '<p>Failed to fetch all projects..<p>'
+          });
+        });
+
     }, function(error){
+      $scope.$parent.showLoader = false;
        ngDialog.open({
           template: '<p>Failed to fetch project dailetails..<p>'
       });
     });
-    //get all projects in that location and populate in drop down
-    propertyService.listAllLocationsByProject($scope.locationId)
-    .then(function(result){
-        $scope.projectList = result;
-    }, function(error){
-       ngDialog.open({
-          template: '<p>Failed to fetch all projects..<p>'
-      });
-    });
+
 
   }
   $scope.showSpinner = false;

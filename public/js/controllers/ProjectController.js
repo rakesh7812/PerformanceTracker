@@ -2,13 +2,17 @@ angular.module('tracker.app.project',[]).controller('ProjectListController', fun
 
 $scope.title = 'ProjectListController';
 
+$scope.$parent.showLoader = true;
+
 $scope.allProjects = null;
 
 $scope.init = function(){
   projectService.listAllProject()
   .then(function(result){
       $scope.allProjects = result;
+      $scope.$parent.showLoader = false;
   }, function(error){
+      $scope.$parent.showLoader = false;
      ngDialog.open({
         template: '<p>Failed to fetch all projects..<p>'
     });

@@ -1,6 +1,6 @@
 angular.module("trackerapp.login",[]).controller('AuthenticationController', function($scope,$rootScope,authenticationService,ngDialog,$location,$state){
 
-    $scope.showLoading = false;
+    $scope.showLoader = true;
 
     $scope.user = {
       email:'', password:''
@@ -39,6 +39,16 @@ angular.module("trackerapp.login",[]).controller('AuthenticationController', fun
 
     }
 
+
+
+})
+.controller('HomePageController', function($scope){
+
+  $scope.init = function(){
+    $scope.$parent.showLoader = false;
+  }
+
+  $scope.init();
 
 
 });

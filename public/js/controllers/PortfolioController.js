@@ -1,13 +1,15 @@
 angular.module('tracker.app.portfolio',[])
 .controller('PortfolioListController', function($scope,$state,projectService,ngDialog,propertyService,$stateParams){
-
+$scope.$parent.showLoader = true;
 $scope.title = 'PortfolioListController';
 
 $scope.init = function(){
     propertyService.getAllProjectMasterDetails()
     .then(function(result){
         $scope.projectDetails = result;
+        $scope.$parent.showLoader = false;
     }, function(error){
+      $scope.$parent.showLoader = false;
        ngDialog.open({
           template: '<p>Failed to fetch project details<p>'
       });
@@ -19,7 +21,7 @@ $scope.init();
 
 })
 .controller('ProjectPortfolioDetailsController', function($scope,$state,projectService,ngDialog,propertyService,$stateParams){
-
+$scope.$parent.showLoader = true;
 $scope.title = 'ProjectPortfolioDetailsController';
 
 $scope.init = function(){
@@ -33,8 +35,10 @@ $scope.init = function(){
             $scope.locations = result;
 
             $scope.data = getPortfolioChartData();
+            $scope.$parent.showLoader = false;
 
         }, function(error){
+          $scope.$parent.showLoader = false;
            ngDialog.open({
               template: '<p>Failed to fetch locations details..<p>'
           });

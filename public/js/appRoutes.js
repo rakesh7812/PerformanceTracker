@@ -12,7 +12,8 @@ function($stateProvider,$urlRouterProvider,$locationProvider,  $httpProvider){
           })
           .state('home', {
             url: "/home",
-            templateUrl: "views/main/home.html"
+            templateUrl: "views/main/home.html",
+            controller:"HomePageController"
           })
           .state('home.project', {
                 url: "^/project",
