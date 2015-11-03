@@ -155,6 +155,169 @@ angular.module('trackerapp.property.service',[]).factory('propertyService',funct
 
     }
 
+    function getValueArrayForPortfolioChart(monthKey,dataPosition,masterDetails,locations){
+      var valueArray = [];
+      masterDetails.map(function(eachMaster){
+          var dataGrid  = eachMaster.data[1];
+          valueArray.push({
+            x:getLocationNameById(eachMaster.locationId,locations),
+            y:dataGrid[dataPosition],
+            key:monthKey
+          });
+      });
+      return valueArray;
+    }
+    services.preparePerfByLocBarChartData =  function(masterDetails, locations){
+
+        var result = [];
+        var valueArray = [];
+
+        valueArray = getValueArrayForPortfolioChart("Apr 2015",2,masterDetails,locations);
+        result.push({
+          key:"Apr 2015",
+          values: valueArray
+        });
+
+        valueArray = getValueArrayForPortfolioChart("May 2015",3,masterDetails,locations);
+        result.push({
+          key:"May 2015",
+          values: valueArray
+        });
+
+        valueArray = getValueArrayForPortfolioChart("Jun 2015",4,masterDetails,locations);
+        result.push({
+          key:"Jun 2015",
+          values: valueArray
+        });
+
+        valueArray = getValueArrayForPortfolioChart("Jul 2015",5,masterDetails,locations);
+        result.push({
+          key:"Jul 2015",
+          values: valueArray
+        });
+
+        valueArray = getValueArrayForPortfolioChart("Aug 2015",6,masterDetails,locations);
+        result.push({
+          key:"Aug 2015",
+          values: valueArray
+        });
+
+        valueArray = getValueArrayForPortfolioChart("Sep 2015",7,masterDetails,locations);
+        result.push({
+          key:"Sep 2015",
+          values: valueArray
+        });
+
+        valueArray = getValueArrayForPortfolioChart("Oct 2015",8,masterDetails,locations);
+        result.push({
+          key:"Oct 2015",
+          values: valueArray
+        });
+
+        valueArray = getValueArrayForPortfolioChart("Nov 2015",9,masterDetails,locations);
+        result.push({
+          key:"Nov 2015",
+          values: valueArray
+        });
+
+        valueArray = getValueArrayForPortfolioChart("Dec 2015",10,masterDetails,locations);
+        result.push({
+          key:"Dec 2015",
+          values: valueArray
+        });
+
+        valueArray = getValueArrayForPortfolioChart("Jan 2016",11,masterDetails,locations);
+        result.push({
+          key:"Jan 2016",
+          values: valueArray
+        });
+
+        valueArray = getValueArrayForPortfolioChart("Feb 2016",12,masterDetails,locations);
+        result.push({
+          key:"Feb 2016",
+          values: valueArray
+        });
+
+        valueArray = getValueArrayForPortfolioChart("Mar 2016",13,masterDetails,locations);
+        result.push({
+          key:"Mar 2016",
+          values: valueArray
+        });
+
+        return result;
+
+
+    /*  return [
+          {
+            "key": "Jan 2015",
+            "values": [
+              {
+                "x": "Sydney",
+                "y": 1.3214710513106702,
+                "key": "Jan 2015"
+              },
+              {
+                "x": "India",
+                "y": 1.531705920532457,
+                "key": "Jan 2015"
+              },
+              {
+                "x": "CA",
+                "y": 1.696876610976657,
+                "key": "Jan 2015"
+              }
+            ]
+          },
+          {
+            "key": "Feb 2015",
+            "values": [
+              {
+                "x": "Sydney",
+                "y": 0.17641863846073996,
+                "key": "Feb 2015"
+              },
+              {
+                "x": "India",
+                "y": 0.17857158941857948,
+                "key": "Feb 2015"
+              },
+              {
+                "x": "CA",
+                "y": 0.20249790885884544,
+                "key": "Feb 2015"
+              }
+            ]
+          },
+          {
+            "key": "Mar 2015",
+            "values": [
+              {
+                "x": "Sydney",
+                "y": 0.100868280140793,
+                "key": "Mar 2015"
+              },
+              {
+                "x": "India",
+                "y": 0.1682723549304544,
+                "key": "Mar 2015"
+              },
+              {
+                "x": "CA",
+                "y": 0.12409694668585157,
+                "key": "Mar 2015"
+              }
+            ]
+          }
+        ];*/
+      }
+
+
+
+
+
+
+
+
     services.prepareChartData =  function(masterDetails,isTemplate1){
       var result = [];
       //console.log(isTemplate1);

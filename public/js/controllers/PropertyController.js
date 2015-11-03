@@ -35,18 +35,51 @@ $scope.init();
 //$scope.labels = ['Apr 2015', 'May 2015', 'Jun 2015', 'Jul 2015', 'Aug 2015', 'Sep 2015', 'Oct 2015', "Nov 2015","Dec 2015", "Jan 2016", "Feb 2016". "Mar 2016"];
 
 
-$scope.series = ['Apr 2015', 'May 2015', 'Jun 2015', 'Jul 2015', 'Aug 2015', 'Sep 2015', 'Oct 2015', 'Nov 2015','Dec 2015', 'Jan 2016', 'Feb 2016', 'Mar 2016'];
+$scope.options = {
+         chart: {
+             type: 'multiBarChart',
+             height: 450,
+             margin : {
+                 top: 20,
+                 right: 20,
+                 bottom: 45,
+                 left: 45
+             },
+             clipEdge: true,
+             //staggerLabels: true,
+             transitionDuration: 500,
+             stacked: false,
+             xAxis: {
+                 axisLabel: 'Property',
+                 showMaxMin: false,
+                 tickFormat: function(d){
 
-  function getBarChartLabels(){
+                     return d;
+                 }
+             },
+             yAxis: {
+                 axisLabel: 'Revenue',
+                 axisLabelDistance: -20,
+                 tickFormat: function(d){
+                     return d3.format(',.1f')(d);
+                 }
+             }
+         }
+     };
+
+
+//$scope.series = ['Apr 2015', 'May 2015', 'Jun 2015', 'Jul 2015', 'Aug 2015', 'Sep 2015', 'Oct 2015', 'Nov 2015','Dec 2015', 'Jan 2016', 'Feb 2016', 'Mar 2016'];
+
+  /*function getBarChartLabels(){
     var labels = [];
     $scope.masterDetails.map(function(eachMaster){
         var locName = getLocationNameById(eachMaster.locationId);
         labels.push(locName);
     });
     return labels;
-  }
+  }*/
 
-  function getLocationNameById(locationId){
+  /*function getLocationNameById(locationId){
     var locName;
       $scope.locations.map(function(loc){
           if(angular.equals(locationId,loc._id)){
@@ -54,10 +87,13 @@ $scope.series = ['Apr 2015', 'May 2015', 'Jun 2015', 'Jul 2015', 'Aug 2015', 'Se
           }
       });
       return locName;
-  }
-
+  }*/
 
   function getBarChartData(){
+    return propertyService.preparePerfByLocBarChartData($scope.masterDetails, $scope.locations);
+  }
+
+  /*function getBarChartData1(){
     var result = [];
 
     for(var i=2; i<=13;i++){
@@ -72,13 +108,9 @@ $scope.series = ['Apr 2015', 'May 2015', 'Jun 2015', 'Jul 2015', 'Aug 2015', 'Se
 
     $scope.labels = getBarChartLabels();
     return result;
-  /*return   [
-      [65, 59, 80, 81, 56, 55, 40],
-      [28, 48, 40, 19, 86, 27, 90],
-      [34, 56, 80, 23, 67, 78, 134]
-    ];*/
-  }
 
+  }
+*/
 
 //************Chart data ends here
 
