@@ -66,7 +66,7 @@ $scope.options = {
              clipEdge: true,
              //staggerLabels: true,
              transitionDuration: 500,
-             stacked: false,
+             stacked: true,
              xAxis: {
                  axisLabel: 'Month',
                  showMaxMin: false,
