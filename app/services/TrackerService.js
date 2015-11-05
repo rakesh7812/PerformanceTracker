@@ -14,9 +14,14 @@ trackerService.createProject =  function(project){
 }
 
 trackerService.listAllProject =  function(req,res){
-  ProjectModel.find({}, function(err,projects){
-    res.json(projects);
+  ProjectModel.find({})
+  .then(function(projects){
+      res.json(projects);
   });
+
+  /*ProjectModel.find({}, function(err,projects){
+    res.json(projects);
+  });*/
 }
 
 trackerService.listAllLocations =  function(req,res){
