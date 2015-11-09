@@ -8,7 +8,7 @@
 
   <div class="col-md-6">
     <div class="panel panel-primary">
-      <div class="panel-heading">Properties</div>
+      <div class="panel-heading">Properties&nbsp;<span class="badge">{{locations.length}}</span></div>
       <div class="panel-body">
         <div class="list-group">
           <a ui-sref="home.viewproperty({id:model._id,name:model.name})" ng-repeat="model in locations" class="list-group-item">
@@ -21,7 +21,7 @@
   <div class="col-md-6">
   <div class="row">
       <div class="panel panel-primary">
-        <div class="panel-heading">Projects</div>
+        <div class="panel-heading">Projects&nbsp;<span class="badge">{{projects.length}}</span></div>
         <div class="panel-body">
           <div class="list-group">
             <a ui-sref="home.viewPDForAllLocs({projectId:model._id})" ng-repeat="model in projects" class="list-group-item">
@@ -33,7 +33,7 @@
   </div>
   <div class="row">
       <div class="panel panel-primary">
-        <div class="panel-heading">Recent Activities</div>
+        <div class="panel-heading">Recent Activities&nbsp;<span class="badge">0</span></div>
         <div class="panel-body">
             Recent Activities if any
         </div>
