@@ -37,8 +37,8 @@
               <td>{{model.originatingPropertyContact}}</td>
               <td>{{model.originatingPropertyImpact}}</td>!-->
               <td>{{model.templateName}}</td>
-              <td><button ng-click="showInviteProperty(model._id, model.title,model.templateName)" class="btn btn-warning" type="button">Invite Property</button></td>
-              <td><button ng-click="showPropertiesInvited(model._id,model.title)" class="btn btn-warning" type="button">Properties Invited</button></td>
+              <td><button ng-click="showInviteProperty(model._id, model.title,model.templateName)" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-share"></span>&nbsp;Invite Property</button></td>
+              <td><button ng-click="showPropertiesInvited(model._id,model.title)" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Properties Invited</button></td>
             </tr>
         </table>
     </div>
@@ -61,7 +61,7 @@
                 </div>
               </div>
               <div class="col-sm-8">
-                <span class="label label-warning">Selected Locations:</span>
+                <span class="label label-warning">Selected Properties:</span>
                 &nbsp;
                   <span class="label label-default" style="margin-right:10px;" ng-repeat="loc in selectedLocations">
                     {{loc.name}}
@@ -77,7 +77,7 @@
           </div>
           <br/>
           <div class="row container-fluid">
-            <button ng-click="inviteProperty()" class="btn btn-primary" type="button">Send</button>
+            <button ng-click="inviteProperty()" class="btn btn-primary" type="button"><span class="glyphicon glyphicon-send"></span>&nbsp;Send</button>
           </div>
         </div>
 
