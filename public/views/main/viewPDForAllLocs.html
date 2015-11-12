@@ -26,6 +26,18 @@
       </div>
     </div>
   </div>
+  <div class="col-md-5">
+    <div class="panel panel-default">
+      <div class="panel-heading">Properties&nbsp;<span class="badge">{{locations.length}}</span></div>
+      <div class="panel-body">
+        <div class="list-group">
+          <a ui-sref="home.editProject({projectId:projectDetails._id,locationId:model._id})" ng-repeat="model in locations" class="list-group-item">
+            {{model.name}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="row">
