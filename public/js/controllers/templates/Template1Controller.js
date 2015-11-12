@@ -37,20 +37,39 @@ $scope.headerRendererBasic = function (instance, td, row, col, prop, value, cell
 
 //new renderer
 $scope.greyOutRenderer = function (instance, td, row, col, prop, value, cellProperties) {
-  Handsontable.renderers.TextRenderer.apply(this, arguments);
-  td.style.backgroundColor = '#BDD7EE'
-  td.style.fontWeight = 'bold';
-  td.style.textAlign = 'center';
-  td.style.color = "#000";
+  Handsontable.cellTypes['formula'].renderer.apply(this, arguments);
+  td.style.backgroundColor = '#D9DDDE'
   cellProperties.type = 'numeric';
   cellProperties.format = '$0,0.00';
+  td.style.fontWeight = ((col == 14 && row==0) ? 'bold' : 'normal');
+  if(col == 14 && row==0){
+    td.style.color="#000"
+  }
+
+};
+
+$scope.greyOutHeaderRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+  Handsontable.renderers.TextRenderer.apply(this, arguments);
+  td.style.backgroundColor = '#5C9096';
+  td.style.color="#FFF";
+  td.style.fontWeight  = 'normalgoo';
+};
+
+$scope.dataCellRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+  Handsontable.cellTypes['formula'].renderer.apply(this, arguments);
+  td.style.backgroundColor = "#DFEDF5";
+  //'#C3EAF7';
+  cellProperties.type = 'numeric';
+  cellProperties.format = '$0,0.00';
+
 };
 
 $scope.settingsTemplateBasic = {
-    height: 396,
-    fixedRowsTop: 1,
-    colHeaders: true,
-    rowHeaders: true,
+    height: 350,
+    colHeaders: false,
+    stretchH: 'all',
+    fixedRowsTop: 0,
+    rowHeaders: false,
     formulas: true,
     comments: true,
     manualColumnResize:true,
@@ -63,14 +82,21 @@ $scope.settingsTemplateBasic = {
         cellProperties.renderer = $scope.headerRendererBasic;
       }
       if(col == 14 || row == 12){
-      //  cellProperties.renderer = $scope.greyOutRenderer;
+        cellProperties.renderer = $scope.greyOutRenderer;
       }
       if (row == 0 || col == 14 || row == 12) {
         cellProperties.readOnly = true;
       }
-      if(row==0 && col==14){
-      //  cellProperties.renderer = $scope.greyOutRenderer;
+      if(row==0){
+        cellProperties.renderer = $scope.greyOutHeaderRenderer;
       }
+      if(row!=0 && row !=12){
+        if(col>=2 && col<=13){
+          cellProperties.renderer = $scope.dataCellRenderer;
+        }
+      }
+
+
       if(row>=1){
         cellProperties.type = 'numeric';
         cellProperties.format = '$0,0.00';
@@ -86,7 +112,7 @@ $scope.settingsTemplateBasic = {
 
   $timeout(function(){
     var tableInstance = hotRegisterer.getInstance('handsonTemplateBasic');
-               tableInstance.updateSettings({formulas: true});
+               tableInstance.updateSettings($scope.settingsTemplateBasic);
                tableInstance.render();
                },10);
 

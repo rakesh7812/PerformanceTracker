@@ -53,9 +53,9 @@ $scope.greyOutRenderer = function (instance, td, row, col, prop, value, cellProp
 
 $scope.settingsTemplateBasic = {
     height: 396,
-    fixedRowsTop: 1,
-    colHeaders: true,
-    rowHeaders: true,
+    fixedRowsTop: 0,
+    colHeaders: false,
+    rowHeaders: false,
     formulas: true,
     comments: true,
     manualColumnResize:true,
@@ -89,7 +89,7 @@ $scope.settingsTemplateBasic = {
 
   $timeout(function(){
     var tableInstance = hotRegisterer.getInstance('handsonTemplateBasic');
-               tableInstance.updateSettings({formulas: true});
+               tableInstance.updateSettings($scope.settingsTemplateBasic);
                tableInstance.render();
                },10);
 
