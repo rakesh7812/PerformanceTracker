@@ -126,7 +126,7 @@ $scope.items = [
 
 $timeout(function(){
   var tableInstance = hotRegisterer.getInstance('my-handsontable');
-             tableInstance.updateSettings({formulas: true});
+             tableInstance.updateSettings($scope.settingsnew);
              tableInstance.render();
              },10);
 
@@ -136,8 +136,7 @@ $scope.headerRenderer = function (instance, td, row, col, prop, value, cellPrope
     td.style.textAlign = 'center';
   };
   $scope.diffRenderer = function (instance, td, row, col, prop, value, cellProperties) {
-  Handsontable.cellTypes['formula'].renderer.apply(this, arguments);
-  //Handsontable.renderers.NumericRenderer.apply(this, arguments);
+    Handsontable.cellTypes['formula'].renderer.apply(this, arguments);
     td.style.backgroundColor = '#c3f89c';
     td.style.fontWeight = (col === 13 ? 'bold' : 'normal');
   };
@@ -218,7 +217,7 @@ $scope.settingsnew = {
       if (row === 0) {
         cellProperties.renderer = $scope.headerRenderer;
       } else if (row === 3) {
-        cellProperties.renderer = this.diffRenderer;
+        cellProperties.renderer = $scope.diffRenderer;
       } else if (row === 5) {
         cellProperties.renderer = $scope.incomeOrExpensesRenderer;
       } else if (row === 13) {
